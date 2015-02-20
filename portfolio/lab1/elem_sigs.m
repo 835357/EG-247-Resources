@@ -15,7 +15,7 @@
 % \end{array}} \right.$$
 %
 % In MATLAB the unit step is defined using the |heaviside| function
-doc heaviside
+%doc heaviside
 %%
 % We can thus define and plot the unit step $u_0(t)$ with the command
 syms t;
@@ -38,18 +38,49 @@ ezplot(v1,[-1, 4]),grid
 % and |ezplot| functions to plot each of the following:
 %
 % # $-Au_0(t)$ 
+A = 2; T = 2;
+v1 = A*heaviside(t);
+ezplot(v1,[-4, 4]),grid
 % # $-Au_0(t-T)$ 
+A = 2; T = 2;
+v1 = A*heaviside(t - T);
+ezplot(v1,[-4, 4]),grid
 % # $-Au_0(t+T)$ 
+A = 2; T = 2;
+v1 = A*heaviside(t + T);
+ezplot(v1,[-4, 4]),grid
 % # $Au_0(-t)$
+A = 2; T = 2;
+v1 = A*heaviside(-t);
+ezplot(v1,[-4, 4]),grid
 % # $Au_0(-t+T)$
+A = 2; T = 2;
+v1 = A*heaviside(-t + T);
+ezplot(v1,[-4, 4]),grid
 % # $Au_0(-t-T)$
+A = 2; T = 2;
+v1 = A*heaviside(-t - T);
+ezplot(v1,[-4, 4]),grid
 % # $-Au_0(-t)$ 
+A = 2; T = 2;
+v1 = -A*heaviside(-t);
+ezplot(v1,[-4, 4]),grid
 % # $-Au_0(-t+T)$ 
+A = 2; T = 2;
+v1 = -A*heaviside(-t + T);
+ezplot(v1,[-4, 4]),grid
 % # $-Au_0(-t-T)$
+A = 2; T = 2;
+v1 = -A*heaviside(-t - T);
+ezplot(v1,[-4, 4]),grid
 %% Part 2
 % Use the |heaviside| and |ezplot| functionshow that $u_0(t) - u_0(t - 1)$ 
 % represents the rectangular pulse shown in
 % Figure 1.9 of the textbook.
+A = 2; T = 2;
+v1 = A*heaviside(t);
+v2 = A*heaviside(t - 1);
+ezplot(v1-v2,[-4, 4]),grid
 %% Part 3
 % Use the |heaviside| and |ezplot| functions to validate equations
 % 1.13, 1.14, 1.17 and 1.18.
