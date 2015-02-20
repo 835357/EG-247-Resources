@@ -50,13 +50,36 @@ laplace(delta(t-a))
 % 
 % Use MATLAB to find the laplace transforms of exp(-a*t)*u0(t), t*exp(a*t),
 % t^3*exp(b*t)*u0(t), cos(b*t)*u0(t), sin(b*t)*u0(t)
+
+laplace(exp(-a*t)*u0(t))
+%ans = 1/(a + s)
+laplace(t*exp(a*t))
+% ans = 1/(a - s)^2
+laplace(t^3*exp(b*t)*u0(t))
+% ans = 6/(b - s)^4
+laplace(cos(b*t)*u0(t))
+% ans = s/(b^2 + s^2)
+laplace(sin(b*t)*u0(t))
+% ans = b/(b^2 + s^2)
+
 %% Example 2
 %
 % Find the Laplace Transform of (t^n)*exp(-b*t)*u0(t)
+
+laplace((t^n)*exp(-b*t)*u0(t))
+%ans = piecewise([-1 < real(n), gamma(n + 1)/(b + s)^(n + 1)])
+
 %% Example 3
 %
 % Use matlab to compute the Laplace Transfrom of
 % exp(-a*t)*sin(omega*t)*u0(t) and exp(-a*t)*cos(omega*t)*u0(t)
+
+syms omega
+laplace(exp(-a*t)*sin(omega*t)*u0(t))
+%ans = omega/((a + s)^2 + omega^2)
+laplace(exp(-a*t)*cos(omega*t)*u0(t))
+% ans = (a + s)/((a + s)^2 + omega^2)
+
 %% Laplace Transform Properties
 % Give examples to prove each of the following:
 % # The Linearity Property
@@ -69,11 +92,23 @@ laplace(delta(t-a))
 %
 % Calculate the Laplace Transform of a rectangular pulse with a height 2
 % that starts at t = 1 seconds and ends at t = 3 seconds. Plot the pulse.
+
+pulse = 2* (heaviside(t - 1) - heaviside(t - 3));
+v1 = laplace(pulse)
+% v1 = (2*exp(-s))/s - (2*exp(-3*s))/s
+ezplot(v1,[-4, 4]),grid
+
 %% Example 5
 %
 % Plot a piecewise-linear signal that starts at 0
 % when t=0, goes to -1 at t = 1, +1 at t = 2, and returns to 0 at t = 3.
 % Calculate the Laplace Transform of the waveform.
+
+v2 = -1*heaviside(t-1)+ 2*heaviside(t-2) - 1*heaviside(t-3)
+ezplot(v2,[-4, 4]),grid
+laplace(v2)
+%ans = (2*exp(-2*s))/s - exp(-s)/s - exp(-3*s)/s
+
 %% Example 6
 %
 % Give the laplace transform of the waveform in Example 5 assuming that it
