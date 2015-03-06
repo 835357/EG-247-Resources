@@ -104,7 +104,7 @@ ezplot(v1,[-4, 4]),grid
 % when t=0, goes to -1 at t = 1, +1 at t = 2, and returns to 0 at t = 3.
 % Calculate the Laplace Transform of the waveform.
 
-v2 = -1*heaviside(t-1)+ 2*heaviside(t-2) - 1*heaviside(t-3)
+v2 = -1*heaviside(t)+ 2*heaviside(t-1) - 1*heaviside(t-2)
 ezplot(v2,[-4, 4]),grid
 laplace(v2)
 %ans = (2*exp(-2*s))/s - exp(-s)/s - exp(-3*s)/s
@@ -113,11 +113,41 @@ laplace(v2)
 %
 % Give the laplace transform of the waveform in Example 5 assuming that it
 % repeats every 3 seconds.
+% L{f(t + nT)} = L{f(t)}/(1-exp(-sn))
+% ans = (2*exp(-2*s))/s - exp(-s)/s - exp(-3*s)/s)/(1-exp(-3*s))
+
 %% Example 7
 %
 % Use MATLAB to plot a fully rectified sinusoidal signal abs(sin wt) over
 % 3 full cycles. Find the Laplace Transform of this Signal.
+v3 = abs(sin(2*pi/3*t))
+ezplot(v3,[-4,4])
+ 
+laplace(v3)
+% ans = (2*pi*coth((3*s)/4))/(3*(s^2 + (4*pi^2)/9))
+ 
 %% Homework
 %
 % Chose one example from each of the End of Chapter Exercises 2.8 Q1-Q7
 % and validate the solution using MATLAB.
+
+%Q1.
+% a. 12
+laplace(12*heaviside(t))
+%ans = 12/s
+%
+%b.6*heaviside(t)
+laplace(6*heaviside(t))
+%ans = 6/s
+%
+%c.24*heaviside(t-12)
+laplace(24*heaviside(t-12))
+%ans = (24*exp(-12*s))/s
+%
+%d.5*t*heaviside(t)
+laplace(5*t*heaviside(t))
+%ans = 5/s^2
+%
+%e.4*t^5*heaviside(t)
+laplace(4*t^5*heaviside(t))
+%ans = 480/s^6

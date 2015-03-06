@@ -101,16 +101,48 @@ Ds = conv(d1,d2); % Polynomial multiplication: gives expanded D(s)
 % Solve and plot the inverse Laplace Transform of
 %
 % $$F_5(s) \frac{s^2 + 3s + 1}{(s + 1)^3(s + 2)^2}$$
+Fs5 = (s^2 + 3*s + 1)/((s + 1)^3 * (s + 2)^2)
+ft5=ilaplace(Fs5)
+ezplot(ft5,[0,10])
+hold on;
 %% Example 2
 % use the function |collect| to expand (s + 1)^3 * (s + 2)^2 to
 % a polynomial. Use this result and |residue| to verify the result of
 % example 1.
+collect((s + 1)^3 * (s + 2)^2)
+% ans = s^5 + 7*s^4 + 19*s^3 + 25*s^2 + 16*s+ 4
+[r1,p1,k1] = residue([1 3 1],[1 7 19 25 16 4])
+% r1 =
+% 
+%     4.0000
+%     1.0000
+%    -4.0000
+%     3.0000
+%    -1.0000
+% 
+% 
+% p1 =
+% 
+%    -2.0000
+%    -2.0000
+%    -1.0000
+%    -1.0000
+%    -1.0000
+
+ft5a = 4*exp(-2*t)+1*t*exp(-2*t)-4*exp(-1*t)+3*t*exp(-1*t)-1/2*t^2*exp(-1*t)
+ezplot(ft5a,[0,10])
+hold off;
 %% Non-proper rational polynomials
 %% Example 3
 % Compute and (if possible) plot the Inverse Laplace Transform of
 %
 % $$F_6(s) = \frac{s^2 + 2s + 2}{s + 1}$$
 %
+Fs6 = (s^2 + 2*s + 2)/(s +1);
+ft6 = ilaplace(Fs6)
+%ft6 = exp(-t) + dirac(t) + dirac(t, 1)
+
+
 % Use the |residue| function to validate the result.
 %% Homework
 % Use the tools developed in this lab to solve and plot the Inverse Laplace
