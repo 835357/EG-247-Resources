@@ -10,9 +10,21 @@ R = 1;   % Ohm
 L = 1/4; % H
 
 %% State equations
+% With the equations that defines the behaviour of each components of the circuit 
+% VR(t) = R*i(t)
+% VL(t) = L*i'(t)
+% VC'(t) = i(t)/C
+% Put all togheter is possible to find state equation of the system 
+% Li(t) = -R*i(t) - Vc(t) + Vs(t)
+% and then put it in the matrix form 
+%[i'(t);VC'(t)]=A*[i(t);VC(t)]+B[Vs(t)]
+
 A = [-R/L, -1/L; 1/Cap, 0]
 B = [1/L; 0]
-C = [0, 1]
+% After find the state-equation for the system is possible to retrive any
+% relevant information about the system behaviour by a second matrix
+%[Y]=C*[i(t);VC(t)]+D[X]
+C = [1, 0]
 D = 0
 
 %% Transition matrix
