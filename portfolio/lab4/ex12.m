@@ -62,4 +62,4 @@ ilaplace(([[s 0];[0 s]] - A )^-1)
 %ans = [   2*exp(-2*t) - exp(-t),   exp(-2*t) - exp(-t)]
 %      [ 2*exp(-t) - 2*exp(-2*t), 2*exp(-t) - exp(-2*t)]
 
-% contrary
+% 
