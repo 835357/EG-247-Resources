@@ -21,8 +21,7 @@ k_max = 11;
 %
 % !!!IMPORTANT!!!: the signal definition must cover [0 to T0] 
 %
-ft = A*(heaviside(t)-heaviside(t-T0/2)) - A*(heaviside(t-T0/2)-heaviside(t-T0)); 
-%% Compute TFS
+ft = A.*t.*(heaviside(t)-heaviside(t-T0/4))+ (A.*T0/2 - A.*t).*(heaviside(t-T0/4)-heaviside(t-3*T0/4)) + (A.*t - A*T0).*(heaviside(t-3*T0/4)-heaviside(t-T0)); %% Compute TFS
 %
 % Note that this can take considerable time (6 minutes or more) so be patient!
 %
@@ -47,9 +46,13 @@ hold on
 %% plot original signal
 % (we could use |heaviside| for this as well)
 %
-t = [0,0,0,1/2,1/2,1/2,1/2,1,1,1,3/2,3/2,3/2,2,2,2]*T0;
-f = [-1,0,1,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1];
-plot(t,f,'r')
+
+A = 1;
+t = linspace(0,2*T0,100)
+ft = A.*t.*(heaviside(t)-heaviside(t-T0/4))+ (A.*T0/2 - A.*t).*(heaviside(t-T0/4)-heaviside(t-3*T0/4)) + (A.*t - A*T0).*(heaviside(t-3*T0/4)-heaviside(t-T0)); %% Compute TFS
+%
+plot(t,ft,'red')
+
 grid
 title('Square Wave Reconstructed from Sinewaves')
 hold off

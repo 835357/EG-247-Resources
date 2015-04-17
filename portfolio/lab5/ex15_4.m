@@ -2,19 +2,28 @@
 % Plot convolution of a piecewise linear function.
 %
 % Prepared for EG-247 by Chris P. Jobling
+%
+%u(t) = heaviside(t)
+%
+%ic(t) - ir(t) = 0
+%C*Vc'(t) - (Vin(t) - Vc(t))/R =0
+%
+%s*Vc(s) = Vin(s)/RC - Vc(s)/RC
+%Vc(s) = 1/(s + 1/RC)*Vin(s)/RC
+%
+%Vc(t) = Vin(t)/RC * exp(-t/RC) = h(t)
+%
+%R(s) = H(s)U(s)
+%R(t) = h(t)*u(t)
+%R(t) = int{u(tau - t)h(tau),tau,0,t}
+
 syms h tau t
-h(t) = (-t + 1)*(heaviside(t)-heaviside(t-1);
-u(t) = heaviside(t)+heaviside(t-1);
+h(t) = (1*exp(-t))*heaviside(t);
+u(t) = heaviside(t);
 %% First segment
 % Integration from 0 to t:
-conv1 = int(1*(-tau + 1),tau,0,t)
-%% Second segment
-% Integration from t - 1 to 1:
-conv2 = int(1*h(tau),tau,t-1,1)
+conv1 = int(1*exp(-tau),tau,0,t)
 %% Plot
-t1 = linspace(0,1,100);
-x = -(t1.*(t1 - 2))./2;
-t2 = linspace(1,2,100);
-y = (t2 - 2).^2./2;
-plot(t1,x,t2,y)
+
+ezplot(conv1,[0,5])
 grid
