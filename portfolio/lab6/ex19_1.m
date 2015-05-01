@@ -15,7 +15,7 @@ k_max = 11;
 %
 % !!!IMPORTANT!!!: the signal definition must cover [0 to T0] 
 %
-ft = A*(heaviside(t)-heaviside(t-T0/2)) - A*(heaviside(t-T0/2)-heaviside(t-T0)); 
+ft = - A*(heaviside(t)-heaviside(t-T0/4)) + A*(heaviside(t-T0/4)-heaviside(t-3*T0/4)) - A*(heaviside(t-3*T0/4)-heaviside(t-T0)); 
 %% Compute EFS
 [Ck, w] = FourierSeries(ft, T0, k_max);
 Ck
@@ -39,6 +39,6 @@ ylabel('|C_k|');
 %%
 subplot(212)
 stem(w/(2*pi),angle(double(Ck_num)), 'o-'); 
-xlabel('f (rad/sec)'); 
-ylabel('\angle C_k [Hz]'); 
+xlabel('f [Hz]'); 
+ylabel('\angle C_k (rad/sec)'); 
 

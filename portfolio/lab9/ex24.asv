@@ -13,12 +13,10 @@ f_sharp = sin(2*pi*739.98*[0:Ts:0.5]);
 g = sin(2*pi*783.99*[0:Ts:0.5]);
 g_sharp = sin(2*pi*830.6*[0:Ts:0.5]);
 
-wait = zeros(1,length(0:Ts:1));
 
-tune = [e,e,b,c,d,e,d,c,b,a,a,c,e,d,c,b,c,d,e,c,a,a];
-% tetris there almost
 
-%tune = [f,c,d,c,d,e]; %835357
+tune = [e,b,c,d,e,d,c,b,a,a,c,e,d,c,b,c,d];
+
 audiowrite('ex24.wav',tune,Fs);
 
 

@@ -48,7 +48,7 @@ hold on
 %
 
 A = 1;
-t = linspace(0,2*T0,100)
+t = linspace(0,2*T0,100);
 ft = A.*t.*(heaviside(t)-heaviside(t-T0/4))+ (A.*T0/2 - A.*t).*(heaviside(t-T0/4)-heaviside(t-3*T0/4)) + (A.*t - A*T0).*(heaviside(t-3*T0/4)-heaviside(t-T0)); %% Compute TFS
 %
 plot(t,ft,'red')

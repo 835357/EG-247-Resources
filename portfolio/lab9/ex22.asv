@@ -20,8 +20,6 @@ sound(x,Fs,16); % sound played at normal frequency and 16 bits
 sound(x,Fs,24); % sound played at normal frequency and 24 bits
 
 % the data stored in each position of the array is just the magnitude of
-% the audio signal to the speaker, so in the case of read the array from the
-% last position to the first the result will be the audio be played
-% backwards.
+% the audio signal to the speaker, so 
 y = flipud(x);
 sound(y,Fs); % sound played at normal frequency

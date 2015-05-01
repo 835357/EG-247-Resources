@@ -25,7 +25,7 @@ ft = -A*(heaviside(t)-heaviside(t-T0/4))+ A*(heaviside(t-T0/4)-heaviside(t-3*T0/
 %
 % Note that this can take considerable time (6 minutes or more) so be patient!
 %
-[a0, ak, bk, w] = TrigFourierSeries(ft, T0, k_max)
+[a0, ak, bk, w] = TrigFourierSeries(ft, T0, k_max);
 %% Reconstruct f(t) from harmonic sine functions
 Ft = a0/2;
 for k=1:k_max
@@ -49,7 +49,7 @@ hold on
 %t = [0,0,0,1/2,1/2,1/2,1/2,1,1,1,3/2,3/2,3/2,2,2,2]*T0;
 %f = [-1,0,1,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1];
 A = 1;
-t = linspace(0,2*T0,100)
+t = linspace(0,2*T0,100);
 ft = -A*(heaviside(t)-heaviside(t-T0/4))+ A*(heaviside(t-T0/4)-heaviside(t-3*T0/4)) - A*(heaviside(t-3*T0/4)-heaviside(t-T0)); %% Compute TFS
 
 plot(t,ft,'red')

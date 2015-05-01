@@ -16,18 +16,19 @@
 clf
 set(0,'defaultaxesfontsize',16);
 
-audioFile = 'eg-247-message.wav';
+audioFile = 'msmv2.wav';
 [data,Fs] = audioread(audioFile);
-
+figure(1)
 %plot data to cut off silence
 plot(data)
-pause
+
 %end1=input('end1?')
 %end2=input('end2?')
 %datar=data(end1:end2);
 datar=data;
 dsize=length(datar);
 
+figure(2)
 %compute 8192 point FFT to view spectrum of speech signal
 deltaf=Fs/8192;
 freq=-Fs/2:deltaf:Fs/2-deltaf;
@@ -36,7 +37,7 @@ xlabel('Analog Frequency (Hz)')
 ylabel('Spectral Magnitude')
 domega=2*pi/8192;
 omega=-pi:domega:pi-domega;
-pause
+
 input('Playback speech at original rate of 8192 Hz.');
 soundsc(datar,Fs)
 disp('Reduce sampling rate by a factor of 2 thru decimation');
@@ -52,6 +53,7 @@ input(' and playback speech at 2048 KHz.');
 datar4=resample(datar,1,4);
 soundsc(datar4,Fs/4)
 
+figure(3)
 %compute via the FFT the DTFT of each of the
 %four sampled versions of the original speech
 %Plot magnitude of each DTFT over -pi to pi

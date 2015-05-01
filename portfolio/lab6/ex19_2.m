@@ -15,7 +15,7 @@ k_max = 11;
 %
 % !!!IMPORTANT!!!: the signal definition must cover [0 to T0] 
 %
-ft = A*(heaviside(t)-heaviside(t-T0/2)) - A*(heaviside(t-T0/2)-heaviside(t-T0)); 
+ft =  abs(A*sin(t))*(heaviside(t)-heaviside(t-T0)); %% Compute TFS
 %% Compute EFS
 [Ck, w] = FourierSeries(ft, T0, k_max);
 Ck

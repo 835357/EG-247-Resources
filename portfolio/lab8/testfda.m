@@ -9,12 +9,12 @@ function Hd = testfda
 % Butterworth Lowpass filter designed using FDESIGN.LOWPASS.
 
 % All frequency values are in Hz.
-Fs = fill-this-in;  % Sampling Frequency
+Fs = 835357;  % Sampling Frequency
 
-Fpass = fill-this-in;       % Passband Frequency
-Fstop = fill-this-in;      % Stopband Frequency
-Apass = fill-this-in;           % Passband Ripple (dB)
-Astop = fill-this-in;          % Stopband Attenuation (dB)
+Fpass = 83536;       % Passband Frequency
+Fstop = 167071;      % Stopband Frequency
+Apass = 3;           % Passband Ripple (dB)
+Astop = 60;          % Stopband Attenuation (dB)
 match = fill-this-in;  % Band to match exactly
 
 % Construct an FDESIGN object and call its BUTTER method.

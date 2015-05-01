@@ -19,7 +19,7 @@
 clf
 set(0,'defaultaxesfontsize',16);
 
-audioFile = 'eg-247-message.wav';
+audioFile = 'msmv2.wav';
 [data,Fs] = audioread(audioFile);
 
 %plot data to cut off silence
